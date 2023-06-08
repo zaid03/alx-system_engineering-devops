@@ -1,2 +1,2 @@
 #!/bin/bash
-own -hR vincent staff 
+own -hR vincent:staff 
