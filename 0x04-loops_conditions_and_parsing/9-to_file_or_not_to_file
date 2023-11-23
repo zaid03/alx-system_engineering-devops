@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# alx school file checker
+
+file="school"
+
+# checks if file exists
+if [ -e "$file" ]; then
+
+  echo "school file exists"
+
+  # checks if file is empty
+  if [ ! -s "$file" ]; then
+    echo "school file is empty"
+
