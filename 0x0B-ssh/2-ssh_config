@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # SSH Config File
 
-Host *
+Host web-01
 	Hostname 52.201.220.52
 	User ubuntu
 	PasswordAuthentication no
