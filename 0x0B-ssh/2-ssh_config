@@ -6,7 +6,3 @@ Host *
 	User ubuntu
 	PasswordAuthentication no
 	IdentityFile ~/.ssh/school
-	SendEnv LANG LC_*
-	GSSAPIAuthentication yes
-	[O
-	GSSAPIDelegateCredentials no
