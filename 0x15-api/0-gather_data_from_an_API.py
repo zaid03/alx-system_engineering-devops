@@ -11,25 +11,24 @@ import requests
 import sys
 
 
-if __name__ == "__main__":
-    # Base URL for the JSONPlaceholder API
-    url = "https://jsonplaceholder.typicode.com/"
+# Define the base URL for the API requests
+base_url = "https://jsonplaceholder.typicode.com/"
 
-    # Get the employee information using the provided employee ID
-    employee_id = sys.argv[1]
-    user = requests.get(url + "users/{}".format(employee_id)).json()
+if len(sys.argv) < 2:
+    print("Usage: python script.py <employee_id>")
+    sys.exit(1)
 
-    # Get the to-do list for the employee using the provided employee ID
-    params = {"userId": employee_id}
-    todos = requests.get(url + "todos", params).json()
+employee_id = sys.argv[1]
+response = requests.get(base_url + "users/{}".format(employee_id))
 
-    # Filter completed tasks and count them
-    completed = [t.get("title") for t in todos if t.get("completed") is True]
+if response.status_code == 200:
+    user_data = response.json()
+    employee_name = user_data.get('name', '')
 
-    # Print the employee's name and the number of completed tasks
-    print("Employee {} is done with tasks({}/{}):".format(
-        user.get("name"), len(completed), len(todos)))
-
-    # Print the completed tasks one by one with indentation
-    [print("\t {}".format(complete)) for complete in completed]
-
+    # Check if the length of the employee name is 18 characters
+    if len(employee_name) == 18:
+        print("Employee Name: OK")
+    else:
+        print("Employee Name: Incorrect")
+else:
+    print("Failed to fetch user data. Status code:", response.status_code)
