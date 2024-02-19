@@ -11,9 +11,6 @@ import requests
 import sys
 
 
-# Define the base URL for the API requests
-base_url = "https://jsonplaceholder.typicode.com/"
-
 if len(sys.argv) < 2:
     print("Usage: python script.py <employee_id>")
     sys.exit(1)
